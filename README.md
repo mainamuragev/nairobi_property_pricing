@@ -24,6 +24,24 @@ The pipeline consists of several stages:
 *   **Affordability Calculation**: Computes the **price per bedroom**, a key metric for comparing value across different property sizes.
 *   **Location Summaries**: Aggregates data by area to generate summary statistics like average rent and bedroom counts (`location_summary_clean.csv`).
 *   **Interactive Mapping**: Visualizes property data on a map of Nairobi County (`nairobi_affordability_map.html`), allowing for geographic exploration of affordability.
+*   ## 📊 Visualizations
+
+### Interactive Affordability Map
+![Affordability Map](docs/images/affordability_map.png)
+*Figure 1: Map showing property affordability across Nairobi. Open [`nairobi_affordability_map.html`](nairobi_affordability_map.html) for the interactive version.*
+
+### Exploratory Data Analysis
+**Price Distribution**
+![Price Distribution](docs/images/price_distribution.png)
+*Figure 2: Histogram of rental prices.*
+
+**Bedrooms vs. Price**
+![Bedrooms vs Price](docs/images/price_by_bedrooms.png)
+*Figure 3: Scatter plot of price by number of bedrooms.*
+
+**Market Segments**
+![Tier Breakdown](docs/images/tier_breakdown.png)
+*Figure 4: Proportion of affordable, mid-range, and premium locations.*
 
 ##  Repository Structure
 
