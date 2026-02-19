@@ -1,3 +1,13 @@
+``
 venv/
 __pycache__/
+*.pyc
 *.log
+geocoded_cache.csv
+geocoded.csv
+charts/
+*.html
+nairobi_properties_full.csv
+properties_with_summary.csv
+all_raw_listings.csv
+*.save
