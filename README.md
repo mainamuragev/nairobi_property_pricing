@@ -6,7 +6,7 @@
 
 A complete data pipeline for scraping, cleaning, enriching, and analyzing property listings in Nairobi. This project transforms raw web data into actionable insights, including price normalization, bedroom extraction, and the creation of an interactive affordability map.
 
-## 📖 Overview
+##  Overview
 
 This project automates the collection and processing of Nairobi real estate data. It is designed to answer key questions like: "What is the average rent per bedroom in different areas?" and "Where are the most affordable neighborhoods based on my budget?".
 
@@ -16,7 +16,7 @@ The pipeline consists of several stages:
 3.  **Enrichment**: Calculating affordability metrics like price per bedroom.
 4.  **Analysis & Visualization**: Generating location-based summaries and an interactive map.
 
-## 🚀 Key Features
+##  Key Features
 
 *   **Automated Data Pipeline**: A series of Python scripts that handle the entire data workflow from `scrape` to `analyze`.
 *   **Intelligent Bedroom Parsing**: Extracts bedroom counts from unstructured text (e.g., "2br", "2 bedroom", "2 bed") using the `parser.py` module.
@@ -25,7 +25,7 @@ The pipeline consists of several stages:
 *   **Location Summaries**: Aggregates data by area to generate summary statistics like average rent and bedroom counts (`location_summary_clean.csv`).
 *   **Interactive Mapping**: Visualizes property data on a map of Nairobi County (`nairobi_affordability_map.html`), allowing for geographic exploration of affordability.
 
-## 📂 Repository Structure
+##  Repository Structure
 
 Here's a breakdown of the key files and directories in this repository:
 
@@ -118,11 +118,11 @@ The typical workflow is sequential. You can run each script as you progress.
     python eda.py
     ```
 
-## 📊 Data Dictionary
+##  Data Dictionary
 
 For a full description of all columns found in the CSV files (e.g., `price_per_bedroom`, `bedrooms`, `location`), please refer to the **[`data_dictionary.md`](./data_dictionary.md)** file.
 
-## 💡 Insights & Potential Use Cases
+##  Insights & Potential Use Cases
 
 The final outputs can be used for:
 *   **Market Analysis**: Identifying overpriced or undervalued neighborhoods.
@@ -130,15 +130,15 @@ The final outputs can be used for:
 *   **Personal House Hunting**: Using the interactive map to quickly find areas within a specific budget.
 *   **Journalism & Research**: Supporting stories or studies on housing affordability in Nairobi.
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/mainamuragev/nairobi_property_pricing/issues) if you have ideas on how to improve the parsing logic, add new data sources, or enhance the visualizations.
 
-## 📄 License
+##  License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## ✨ Author
+##  Author
 
 **mainamuragev**
 
