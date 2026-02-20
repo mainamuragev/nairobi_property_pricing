@@ -42,8 +42,6 @@ The pipeline consists of several stages:
 **Market Segments**
 ![Tier Breakdown](https://github.com/mainamuragev/nairobi_property_pricing/raw/main/docs/images/tier_breakdown.png)
 *Figure 4: Proportion of affordable, mid-range, and premium locations.*
-
-##  Repository Structure
 ###  Full EDA Gallery
 Click on any thumbnail to view the full-size chart.
 
@@ -53,8 +51,8 @@ Click on any thumbnail to view the full-size chart.
 | [![Price per Bedroom](charts/04_price_per_bedroom.png)](charts/04_price_per_bedroom.png) | [![Rank vs Price](charts/05_rank_vs_price_scatter.png)](charts/05_rank_vs_price_scatter.png) | [![Avg vs Median Gap](charts/06_avg_vs_median_gap.png)](charts/06_avg_vs_median_gap.png) |
 | [![Tier Breakdown](charts/07_tier_breakdown.png)](charts/07_tier_breakdown.png) | [![Correlation Heatmap](charts/08_correlation_heatmap.png)](charts/08_correlation_heatmap.png) | [![Full Price Ranking](charts/09_full_price_ranking.png)](charts/09_full_price_ranking.png) |
 
+###  Full EDA Gallery
 Here's a breakdown of the key files and directories in this repository:
-
 | File/Directory | Description |
 | :--- | :--- |
 | **Data Files** |
