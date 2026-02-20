@@ -44,6 +44,14 @@ The pipeline consists of several stages:
 *Figure 4: Proportion of affordable, mid-range, and premium locations.*
 
 ##  Repository Structure
+###  Full EDA Gallery
+Click on any thumbnail to view the full-size chart.
+
+| | | |
+|:---:|:---:|:---:|
+| [![Top/Bottom Prices](charts/01_top_bottom_prices.png)](charts/01_top_bottom_prices.png) | [![Price Distribution](charts/02_price_distribution.png)](charts/02_price_distribution.png) | [![Price by Bedrooms](charts/03_price_by_bedrooms.png)](charts/03_price_by_bedrooms.png) |
+| [![Price per Bedroom](charts/04_price_per_bedroom.png)](charts/04_price_per_bedroom.png) | [![Rank vs Price](charts/05_rank_vs_price_scatter.png)](charts/05_rank_vs_price_scatter.png) | [![Avg vs Median Gap](charts/06_avg_vs_median_gap.png)](charts/06_avg_vs_median_gap.png) |
+| [![Tier Breakdown](charts/07_tier_breakdown.png)](charts/07_tier_breakdown.png) | [![Correlation Heatmap](charts/08_correlation_heatmap.png)](charts/08_correlation_heatmap.png) | [![Full Price Ranking](charts/09_full_price_ranking.png)](charts/09_full_price_ranking.png) |
 
 Here's a breakdown of the key files and directories in this repository:
 
