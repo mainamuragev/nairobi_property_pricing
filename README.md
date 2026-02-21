@@ -6,14 +6,14 @@
 
 A complete data pipeline for scraping, cleaning, enriching, and **predicting** property prices in Nairobi. This project extends the original analysis with machine learning models and interactive tools for investors, tenants, and analysts.
 
-## 🚀 New Features
+##  New Features
 
 - **Machine Learning Price Prediction**: Trained a Random Forest model (MAE = **KES 4.8M**) to estimate property prices based on location and bedrooms.
 - **Interactive Web App**: [`app.py`](app.py) – Enter details and get an estimated price with a realistic range.
 - **Market Dashboard**: [`dashboard.py`](dashboard.py) – Filterable charts for median prices, monthly trends, affordability, and market segments.
 - **Feature Importance Analysis**: Identified top price drivers – bedroom count and premium locations like Westlands, Loresho, and Kiambu Road.
 
-## 📊 Modeling Performance
+##  Modeling Performance
 
 | Model | MAE (KES) | RMSE (KES) | R² |
 |-------|-----------|------------|-----|
@@ -25,7 +25,7 @@ A complete data pipeline for scraping, cleaning, enriching, and **predicting** p
 ![Feature Importance](feature_importance_top5.png)
 *Top 5 price drivers from the Random Forest model.*
 
-## 🖥️ Interactive Apps
+##  Interactive Apps
 
 After installing dependencies (`pip install -r requirements.txt`), run:
 
@@ -38,7 +38,7 @@ streamlit run app.py
 streamlit run dashboard.py
 ```
 
-## 📦 Updated Repository Structure
+##  Updated Repository Structure
 
 | File/Directory | Description |
 | :--- | :--- |
@@ -64,11 +64,11 @@ streamlit run dashboard.py
 | `nairobi_affordability_map.html` | Interactive map |
 | ... (other data files remain) |
 
-## 📈 Dashboard Preview
+##  Dashboard Preview
 
 *(Add screenshots of your dashboard here if desired)*
 
-## 🔮 Next Steps
+##  Next Steps
 
 - Deploy apps online via Streamlit Cloud.
 - Incorporate additional features (property size, amenities) for better accuracy.
@@ -228,6 +228,3 @@ This project is open source and available under the [MIT License](LICENSE).
 **mainamuragev**
 - GitHub: [@mainamuragev](https://github.com/mainamuragev)
 ```
-
-
-
