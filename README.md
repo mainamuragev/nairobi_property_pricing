@@ -1,4 +1,3 @@
-```markdown
 # Nairobi Property Pricing Project
 
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -230,12 +229,5 @@ This project is open source and available under the [MIT License](LICENSE).
 - GitHub: [@mainamuragev](https://github.com/mainamuragev)
 ```
 
-Now, **save and push**:
-
-```bash
-git add README.md
-git commit -m "Update README with new ML models, apps, and dashboard"
-git push origin main
-```
 
 
