@@ -1,0 +1,262 @@
+2026-02-17 12:17:56,610 [INFO] ============================================================
+2026-02-17 12:17:56,610 [INFO]   Nairobi Property Scraper v2 (Playwright)
+2026-02-17 12:17:56,610 [INFO]   Max pages per source: 10
+2026-02-17 12:17:56,611 [INFO]   Headless: True
+2026-02-17 12:17:56,614 [INFO] ============================================================
+2026-02-17 12:18:00,256 [INFO] [BuyRentKenya] Starting Sale listings
+2026-02-17 12:18:00,256 [INFO] [BuyRentKenya] Sale Page 1: https://www.buyrentkenya.com/listings/for-sale/nairobi?page=1
+2026-02-17 12:18:05,855 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:18:05,868 [INFO] [BuyRentKenya] Sale Page 1: 0 total so far
+2026-02-17 12:18:05,893 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:18:05,893 [INFO] [BuyRentKenya] Sale DONE — 0 listings
+2026-02-17 12:18:09,901 [INFO] [BuyRentKenya] Starting Rent listings
+2026-02-17 12:18:09,902 [INFO] [BuyRentKenya] Rent Page 1: https://www.buyrentkenya.com/listings/to-rent/nairobi?page=1
+2026-02-17 12:18:14,491 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:18:14,502 [INFO] [BuyRentKenya] Rent Page 1: 0 total so far
+2026-02-17 12:18:14,521 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:18:14,521 [INFO] [BuyRentKenya] Rent DONE — 0 listings
+2026-02-17 12:18:18,379 [INFO] [Property24] Starting Sale listings
+2026-02-17 12:18:18,380 [INFO] [Property24] Sale Page 1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 12:18:31,078 [INFO] [Property24] Sale Page 1: 0 total
+2026-02-17 12:18:31,099 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:18:31,100 [INFO] [Property24] Sale DONE — 0 listings
+2026-02-17 12:18:35,288 [INFO] [Property24] Starting Rent listings
+2026-02-17 12:18:35,289 [INFO] [Property24] Rent Page 1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 12:18:47,477 [INFO] [Property24] Rent Page 1: 0 total
+2026-02-17 12:18:47,510 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:18:47,510 [INFO] [Property24] Rent DONE — 0 listings
+2026-02-17 12:18:51,986 [INFO] [PigiaMe] Starting Sale listings
+2026-02-17 12:18:51,987 [INFO] [PigiaMe] Sale Page 1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 12:18:56,975 [INFO] [PigiaMe] Sale Page 1: 0 total
+2026-02-17 12:18:56,991 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:18:56,991 [INFO] [PigiaMe] Sale DONE — 0 listings
+2026-02-17 12:18:59,261 [INFO] [PigiaMe] Starting Rent listings
+2026-02-17 12:18:59,262 [INFO] [PigiaMe] Rent Page 1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 12:19:03,288 [INFO] [PigiaMe] Rent Page 1: 0 total
+2026-02-17 12:19:03,304 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:19:03,305 [INFO] [PigiaMe] Rent DONE — 0 listings
+2026-02-17 12:19:05,627 [INFO] [Jiji] Starting Sale listings
+2026-02-17 12:19:05,627 [INFO] [Jiji] Sale Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 12:19:13,516 [INFO] [Jiji] Sale Page 1: 0 total
+2026-02-17 12:19:13,589 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:19:13,590 [INFO] [Jiji] Sale DONE — 0 listings
+2026-02-17 12:19:16,483 [INFO] [Jiji] Starting Rent listings
+2026-02-17 12:19:16,483 [INFO] [Jiji] Rent Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 12:19:22,340 [INFO] [Jiji] Rent Page 1: 0 total
+2026-02-17 12:19:22,609 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:19:22,610 [INFO] [Jiji] Rent DONE — 0 listings
+2026-02-17 12:19:22,873 [INFO] Saved 0 listings → nairobi_properties.csv
+2026-02-17 12:19:22,874 [INFO] ============================================================
+2026-02-17 12:19:22,874 [INFO]   DONE — 0 unique listings in 86.3s
+2026-02-17 12:19:22,874 [INFO]   Output: nairobi_properties.csv
+2026-02-17 12:19:22,875 [INFO] ============================================================
+2026-02-17 12:22:36,064 [INFO] ============================================================
+2026-02-17 12:22:36,066 [INFO]   Nairobi Property Scraper v2 (Playwright)
+2026-02-17 12:22:36,067 [INFO]   Max pages per source: 10
+2026-02-17 12:22:36,067 [INFO]   Headless: True
+2026-02-17 12:22:36,068 [INFO] ============================================================
+2026-02-17 12:22:38,515 [INFO] [BuyRentKenya] Starting Sale listings
+2026-02-17 12:22:38,515 [INFO] [BuyRentKenya] Sale Page 1: https://www.buyrentkenya.com/listings/for-sale/nairobi?page=1
+2026-02-17 12:22:43,766 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:22:43,778 [INFO] [BuyRentKenya] Sale Page 1: 0 total so far
+2026-02-17 12:22:43,805 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:22:43,805 [INFO] [BuyRentKenya] Sale DONE — 0 listings
+2026-02-17 12:22:46,014 [INFO] [BuyRentKenya] Starting Rent listings
+2026-02-17 12:22:46,014 [INFO] [BuyRentKenya] Rent Page 1: https://www.buyrentkenya.com/listings/to-rent/nairobi?page=1
+2026-02-17 12:22:50,665 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:22:50,672 [INFO] [BuyRentKenya] Rent Page 1: 0 total so far
+2026-02-17 12:22:50,687 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:22:50,687 [INFO] [BuyRentKenya] Rent DONE — 0 listings
+2026-02-17 12:22:53,451 [INFO] [Property24] Starting Sale listings
+2026-02-17 12:22:53,452 [INFO] [Property24] Sale Page 1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 12:23:23,594 [INFO] [Property24] Sale Page 1: 0 total
+2026-02-17 12:23:23,624 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:23:23,625 [INFO] [Property24] Sale DONE — 0 listings
+2026-02-17 12:23:26,555 [INFO] [Property24] Starting Rent listings
+2026-02-17 12:23:26,555 [INFO] [Property24] Rent Page 1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 12:23:56,535 [INFO] [Property24] Rent Page 1: 0 total
+2026-02-17 12:23:56,572 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:23:56,572 [INFO] [Property24] Rent DONE — 0 listings
+2026-02-17 12:23:59,574 [INFO] [PigiaMe] Starting Sale listings
+2026-02-17 12:23:59,575 [INFO] [PigiaMe] Sale Page 1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 12:24:05,473 [INFO] [PigiaMe] Sale Page 1: 0 total
+2026-02-17 12:24:05,493 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:24:05,494 [INFO] [PigiaMe] Sale DONE — 0 listings
+2026-02-17 12:24:08,815 [INFO] [PigiaMe] Starting Rent listings
+2026-02-17 12:24:08,815 [INFO] [PigiaMe] Rent Page 1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 12:24:13,102 [INFO] [PigiaMe] Rent Page 1: 0 total
+2026-02-17 12:24:13,138 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:24:13,140 [INFO] [PigiaMe] Rent DONE — 0 listings
+2026-02-17 12:24:15,292 [INFO] [Jiji] Starting Sale listings
+2026-02-17 12:24:15,292 [INFO] [Jiji] Sale Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 12:24:23,474 [INFO] [Jiji] Sale Page 1: 0 total
+2026-02-17 12:24:23,564 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:24:23,565 [INFO] [Jiji] Sale DONE — 0 listings
+2026-02-17 12:24:25,949 [INFO] [Jiji] Starting Rent listings
+2026-02-17 12:24:25,949 [INFO] [Jiji] Rent Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 12:24:30,802 [INFO] [Jiji] Rent Page 1: 0 total
+2026-02-17 12:24:30,852 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:24:30,862 [INFO] [Jiji] Rent DONE — 0 listings
+2026-02-17 12:24:31,251 [INFO] Saved 0 listings → nairobi_properties.csv
+2026-02-17 12:24:31,251 [INFO] ============================================================
+2026-02-17 12:24:31,251 [INFO]   DONE — 0 unique listings in 115.2s
+2026-02-17 12:24:31,251 [INFO]   Output: nairobi_properties.csv
+2026-02-17 12:24:31,251 [INFO] ============================================================
+2026-02-17 12:26:56,964 [INFO] ============================================================
+2026-02-17 12:26:56,965 [INFO]   Nairobi Property Scraper v2 (Playwright)
+2026-02-17 12:26:56,966 [INFO]   Max pages per source: 10
+2026-02-17 12:26:56,966 [INFO]   Headless: True
+2026-02-17 12:26:56,966 [INFO] ============================================================
+2026-02-17 12:27:00,291 [INFO] [BuyRentKenya] Starting Sale listings
+2026-02-17 12:27:00,292 [INFO] [BuyRentKenya] Sale Page 1: https://www.buyrentkenya.com/listings/for-sale/nairobi?page=1
+2026-02-17 12:27:10,790 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:27:10,799 [INFO] [BuyRentKenya] Sale Page 1: 0 total so far
+2026-02-17 12:27:10,928 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:27:10,929 [INFO] [BuyRentKenya] Sale DONE — 0 listings
+2026-02-17 12:27:14,493 [INFO] [BuyRentKenya] Starting Rent listings
+2026-02-17 12:27:14,494 [INFO] [BuyRentKenya] Rent Page 1: https://www.buyrentkenya.com/listings/to-rent/nairobi?page=1
+2026-02-17 12:27:19,133 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:27:19,142 [INFO] [BuyRentKenya] Rent Page 1: 0 total so far
+2026-02-17 12:27:19,160 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:27:19,161 [INFO] [BuyRentKenya] Rent DONE — 0 listings
+2026-02-17 12:27:21,975 [INFO] [Property24] Starting Sale listings
+2026-02-17 12:27:21,976 [INFO] [Property24] Sale Page 1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 12:27:44,007 [INFO] [Property24] Sale Page 1: 0 total
+2026-02-17 12:27:44,032 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:27:44,033 [INFO] [Property24] Sale DONE — 0 listings
+2026-02-17 12:27:47,989 [INFO] [Property24] Starting Rent listings
+2026-02-17 12:27:47,990 [INFO] [Property24] Rent Page 1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 12:28:00,497 [INFO] [Property24] Rent Page 1: 0 total
+2026-02-17 12:28:00,513 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:28:00,513 [INFO] [Property24] Rent DONE — 0 listings
+2026-02-17 12:28:04,243 [INFO] [PigiaMe] Starting Sale listings
+2026-02-17 12:28:04,243 [INFO] [PigiaMe] Sale Page 1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 12:28:09,184 [INFO] [PigiaMe] Sale Page 1: 0 total
+2026-02-17 12:28:09,213 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:28:09,213 [INFO] [PigiaMe] Sale DONE — 0 listings
+2026-02-17 12:28:12,420 [INFO] [PigiaMe] Starting Rent listings
+2026-02-17 12:28:12,421 [INFO] [PigiaMe] Rent Page 1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 12:28:16,446 [INFO] [PigiaMe] Rent Page 1: 0 total
+2026-02-17 12:28:16,458 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:28:16,458 [INFO] [PigiaMe] Rent DONE — 0 listings
+2026-02-17 12:28:19,075 [INFO] [Jiji] Starting Sale listings
+2026-02-17 12:28:19,075 [INFO] [Jiji] Sale Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 12:28:27,863 [INFO] [Jiji] Sale Page 1: 0 total
+2026-02-17 12:28:27,933 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:28:27,934 [INFO] [Jiji] Sale DONE — 0 listings
+2026-02-17 12:28:30,194 [INFO] [Jiji] Starting Rent listings
+2026-02-17 12:28:30,195 [INFO] [Jiji] Rent Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 12:28:38,112 [INFO] [Jiji] Rent Page 1: 0 total
+2026-02-17 12:28:38,242 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:28:38,242 [INFO] [Jiji] Rent DONE — 0 listings
+2026-02-17 12:28:38,792 [INFO] Saved 0 listings → nairobi_properties.csv
+2026-02-17 12:28:38,792 [INFO] ============================================================
+2026-02-17 12:28:38,793 [INFO]   DONE — 0 unique listings in 101.8s
+2026-02-17 12:28:38,793 [INFO]   Output: nairobi_properties.csv
+2026-02-17 12:28:38,793 [INFO] ============================================================
+2026-02-17 12:30:27,414 [INFO] ============================================================
+2026-02-17 12:30:27,414 [INFO]   Nairobi Property Scraper v2 (Playwright)
+2026-02-17 12:30:27,415 [INFO]   Max pages per source: 10
+2026-02-17 12:30:27,415 [INFO]   Headless: False
+2026-02-17 12:30:27,415 [INFO] ============================================================
+2026-02-17 12:30:34,382 [INFO] [BuyRentKenya] Starting Sale listings
+2026-02-17 12:30:34,383 [INFO] [BuyRentKenya] Sale Page 1: https://www.buyrentkenya.com/listings/for-sale/nairobi?page=1
+2026-02-17 12:30:43,683 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:30:43,694 [INFO] [BuyRentKenya] Sale Page 1: 0 total so far
+2026-02-17 12:30:43,726 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:30:43,727 [INFO] [BuyRentKenya] Sale DONE — 0 listings
+2026-02-17 12:30:46,922 [INFO] [BuyRentKenya] Starting Rent listings
+2026-02-17 12:30:46,922 [INFO] [BuyRentKenya] Rent Page 1: https://www.buyrentkenya.com/listings/to-rent/nairobi?page=1
+2026-02-17 12:30:52,195 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 12:30:52,203 [INFO] [BuyRentKenya] Rent Page 1: 0 total so far
+2026-02-17 12:30:52,224 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 12:30:52,226 [INFO] [BuyRentKenya] Rent DONE — 0 listings
+2026-02-17 12:30:56,529 [INFO] [Property24] Starting Sale listings
+2026-02-17 12:30:56,529 [INFO] [Property24] Sale Page 1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 12:31:18,733 [INFO] [Property24] Sale Page 1: 0 total
+2026-02-17 12:31:18,759 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:31:18,759 [INFO] [Property24] Sale DONE — 0 listings
+2026-02-17 12:31:20,846 [INFO] [Property24] Starting Rent listings
+2026-02-17 12:31:20,846 [INFO] [Property24] Rent Page 1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 12:31:33,485 [INFO] [Property24] Rent Page 1: 0 total
+2026-02-17 12:31:33,501 [INFO] [Property24] No more pages after page 1
+2026-02-17 12:31:33,502 [INFO] [Property24] Rent DONE — 0 listings
+2026-02-17 12:31:37,007 [INFO] [PigiaMe] Starting Sale listings
+2026-02-17 12:31:37,008 [INFO] [PigiaMe] Sale Page 1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 12:31:43,590 [INFO] [PigiaMe] Sale Page 1: 0 total
+2026-02-17 12:31:43,617 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 12:31:43,617 [INFO] [PigiaMe] Sale DONE — 0 listings
+2026-02-17 12:31:46,556 [INFO] [PigiaMe] Starting Rent listings
+2026-02-17 12:31:46,556 [INFO] [PigiaMe] Rent Page 1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 12:32:16,734 [WARNING] Navigation failed: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1 — Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1", waiting until "domcontentloaded"
+
+2026-02-17 12:32:16,735 [INFO] [PigiaMe] Rent DONE — 0 listings
+2026-02-17 12:32:20,278 [INFO] [Jiji] Starting Sale listings
+2026-02-17 12:32:20,279 [INFO] [Jiji] Sale Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 12:32:42,690 [INFO] [Jiji] Sale Page 1: 0 total
+2026-02-17 12:32:42,748 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:32:42,748 [INFO] [Jiji] Sale DONE — 0 listings
+2026-02-17 12:32:45,729 [INFO] [Jiji] Starting Rent listings
+2026-02-17 12:32:45,730 [INFO] [Jiji] Rent Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 12:32:59,784 [INFO] [Jiji] Rent Page 1: 0 total
+2026-02-17 12:32:59,816 [INFO] [Jiji] No more pages after page 1
+2026-02-17 12:32:59,817 [INFO] [Jiji] Rent DONE — 0 listings
+2026-02-17 12:33:02,447 [INFO] Saved 0 listings → nairobi_properties.csv
+2026-02-17 12:33:02,448 [INFO] ============================================================
+2026-02-17 12:33:02,448 [INFO]   DONE — 0 unique listings in 155.0s
+2026-02-17 12:33:02,448 [INFO]   Output: nairobi_properties.csv
+2026-02-17 12:33:02,448 [INFO] ============================================================
+2026-02-17 13:47:37,088 [INFO] ============================================================
+2026-02-17 13:47:37,091 [INFO]   Nairobi Property Scraper v2 (Playwright)
+2026-02-17 13:47:37,092 [INFO]   Max pages per source: 10
+2026-02-17 13:47:37,092 [INFO]   Headless: False
+2026-02-17 13:47:37,092 [INFO] ============================================================
+2026-02-17 13:47:43,744 [INFO] [BuyRentKenya] Starting Sale listings
+2026-02-17 13:47:43,754 [INFO] [BuyRentKenya] Sale Page 1: https://www.buyrentkenya.com/listings/for-sale/nairobi?page=1
+2026-02-17 13:47:50,355 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 13:47:50,367 [INFO] [BuyRentKenya] Sale Page 1: 0 total so far
+2026-02-17 13:47:50,385 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 13:47:50,385 [INFO] [BuyRentKenya] Sale DONE — 0 listings
+2026-02-17 13:47:53,103 [INFO] [BuyRentKenya] Starting Rent listings
+2026-02-17 13:47:53,103 [INFO] [BuyRentKenya] Rent Page 1: https://www.buyrentkenya.com/listings/to-rent/nairobi?page=1
+2026-02-17 13:47:58,354 [INFO] [BuyRentKenya] No cards on page 1 — trying full page text extraction
+2026-02-17 13:47:58,371 [INFO] [BuyRentKenya] Rent Page 1: 0 total so far
+2026-02-17 13:47:58,399 [INFO] [BuyRentKenya] No more pages after page 1
+2026-02-17 13:47:58,399 [INFO] [BuyRentKenya] Rent DONE — 0 listings
+2026-02-17 13:48:02,841 [INFO] [Property24] Starting Sale listings
+2026-02-17 13:48:02,842 [INFO] [Property24] Sale Page 1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 13:48:17,688 [INFO] [Property24] Sale Page 1: 0 total
+2026-02-17 13:48:17,740 [INFO] [Property24] No more pages after page 1
+2026-02-17 13:48:17,741 [INFO] [Property24] Sale DONE — 0 listings
+2026-02-17 13:48:20,086 [INFO] [Property24] Starting Rent listings
+2026-02-17 13:48:20,087 [INFO] [Property24] Rent Page 1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 13:48:35,637 [INFO] [Property24] Rent Page 1: 0 total
+2026-02-17 13:48:35,660 [INFO] [Property24] No more pages after page 1
+2026-02-17 13:48:35,661 [INFO] [Property24] Rent DONE — 0 listings
+2026-02-17 13:48:38,930 [INFO] [PigiaMe] Starting Sale listings
+2026-02-17 13:48:38,931 [INFO] [PigiaMe] Sale Page 1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 13:48:44,535 [INFO] [PigiaMe] Sale Page 1: 0 total
+2026-02-17 13:48:44,549 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 13:48:44,550 [INFO] [PigiaMe] Sale DONE — 0 listings
+2026-02-17 13:48:46,735 [INFO] [PigiaMe] Starting Rent listings
+2026-02-17 13:48:46,736 [INFO] [PigiaMe] Rent Page 1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 13:48:51,209 [INFO] [PigiaMe] Rent Page 1: 0 total
+2026-02-17 13:48:51,229 [INFO] [PigiaMe] No more pages after page 1
+2026-02-17 13:48:51,230 [INFO] [PigiaMe] Rent DONE — 0 listings
+2026-02-17 13:48:54,220 [INFO] [Jiji] Starting Sale listings
+2026-02-17 13:48:54,221 [INFO] [Jiji] Sale Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 13:49:00,790 [INFO] [Jiji] Sale Page 1: 0 total
+2026-02-17 13:49:00,843 [INFO] [Jiji] No more pages after page 1
+2026-02-17 13:49:00,843 [INFO] [Jiji] Sale DONE — 0 listings
+2026-02-17 13:49:03,543 [INFO] [Jiji] Starting Rent listings
+2026-02-17 13:49:03,554 [INFO] [Jiji] Rent Page 1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 13:49:09,562 [INFO] [Jiji] Rent Page 1: 0 total
+2026-02-17 13:49:09,596 [INFO] [Jiji] No more pages after page 1
+2026-02-17 13:49:09,597 [INFO] [Jiji] Rent DONE — 0 listings
+2026-02-17 13:49:10,479 [INFO] Saved 0 listings → nairobi_properties.csv
+2026-02-17 13:49:10,480 [INFO] ============================================================
+2026-02-17 13:49:10,480 [INFO]   DONE — 0 unique listings in 93.4s
+2026-02-17 13:49:10,480 [INFO]   Output: nairobi_properties.csv
+2026-02-17 13:49:10,481 [INFO] ============================================================

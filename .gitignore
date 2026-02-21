@@ -1,13 +1,18 @@
-``
-venv/
+# Python
 __pycache__/
 *.pyc
-*.log
-geocoded_cache.csv
-geocoded.csv
-charts/
-*.html
-nairobi_properties_full.csv
-properties_with_summary.csv
-all_raw_listings.csv
-*.save
+venv/
+.env
+
+# Data files (optional – keep if you want the CSVs in the repo)
+# *.csv
+# *.geojson
+
+# Large file
+google-chrome-stable_current_amd64.deb
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store

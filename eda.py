@@ -30,7 +30,16 @@ import matplotlib.ticker as mticker
 import matplotlib.patches as mpatches
 from matplotlib.gridspec import GridSpec
 import seaborn as sns
+import os
+os.makedirs('docs/images', exist_ok=True)
 
+# ... after creating a histogram plot ...
+plt.savefig('docs/images/price_distribution.png', dpi=150, bbox_inches='tight')
+plt.close()
+
+# ... after creating a scatter plot (bedrooms vs price) ...
+plt.savefig('docs/images/bedrooms_vs_price.png', dpi=150, bbox_inches='tight')
+plt.close()
 warnings.filterwarnings("ignore")
 
 # ─────────────────────────────────────────────────────────────
