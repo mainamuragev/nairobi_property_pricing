@@ -1,0 +1,155 @@
+2026-02-17 14:06:24,478 [INFO] ============================================================
+2026-02-17 14:06:24,478 [INFO]   Nairobi Property Scraper v4
+2026-02-17 14:06:24,478 [INFO]   playwright-stealth: False
+2026-02-17 14:06:24,479 [INFO] ============================================================
+2026-02-17 14:06:24,479 [INFO] [BuyRentKenya] Sale — requests mode
+2026-02-17 14:06:24,480 [INFO] [BuyRentKenya] Sale p1: https://www.buyrentkenya.com/property-for-sale/nairobi?page=1
+2026-02-17 14:06:25,839 [WARNING] [BuyRentKenya] Failed to load https://www.buyrentkenya.com/property-for-sale/nairobi?page=1
+2026-02-17 14:06:25,839 [INFO] [BuyRentKenya] Sale DONE — 0
+2026-02-17 14:06:29,144 [INFO] [BuyRentKenya] Rent — requests mode
+2026-02-17 14:06:29,145 [INFO] [BuyRentKenya] Rent p1: https://www.buyrentkenya.com/property-for-rent/nairobi?page=1
+2026-02-17 14:06:30,159 [WARNING] [BuyRentKenya] Failed to load https://www.buyrentkenya.com/property-for-rent/nairobi?page=1
+2026-02-17 14:06:30,160 [INFO] [BuyRentKenya] Rent DONE — 0
+2026-02-17 14:06:33,151 [INFO] [Jiji] Sale — requests mode
+2026-02-17 14:06:33,154 [INFO] [Jiji] Sale p1: https://jiji.co.ke/nairobi/houses-apartments-for-sale?page=1
+2026-02-17 14:06:34,656 [INFO]   DOM cards: 0
+2026-02-17 14:06:34,656 [INFO] [Jiji] Sale p1: 0 total
+2026-02-17 14:06:34,662 [INFO] [Jiji] Sale DONE — 0
+2026-02-17 14:06:36,814 [INFO] [Jiji] Rent — requests mode
+2026-02-17 14:06:36,817 [INFO] [Jiji] Rent p1: https://jiji.co.ke/nairobi/houses-apartments-for-rent?page=1
+2026-02-17 14:06:38,654 [INFO]   DOM cards: 0
+2026-02-17 14:06:38,655 [INFO] [Jiji] Rent p1: 0 total
+2026-02-17 14:06:38,667 [INFO] [Jiji] Rent DONE — 0
+2026-02-17 14:06:46,637 [INFO] [Property24] Sale
+2026-02-17 14:06:46,638 [INFO] [Property24] Sale p1: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=1
+2026-02-17 14:06:52,969 [INFO]   DOM cards: 21
+2026-02-17 14:06:53,095 [INFO] [Property24] Sale p1: 21 total
+2026-02-17 14:06:57,523 [INFO] [Property24] Sale p2: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=2
+2026-02-17 14:07:03,303 [INFO]   DOM cards: 21
+2026-02-17 14:07:03,372 [INFO] [Property24] Sale p2: 42 total
+2026-02-17 14:07:06,422 [INFO] [Property24] Sale p3: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=3
+2026-02-17 14:07:11,329 [INFO]   DOM cards: 21
+2026-02-17 14:07:11,394 [INFO] [Property24] Sale p3: 63 total
+2026-02-17 14:07:15,619 [INFO] [Property24] Sale p4: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=4
+2026-02-17 14:07:21,021 [INFO]   DOM cards: 21
+2026-02-17 14:07:21,073 [INFO] [Property24] Sale p4: 84 total
+2026-02-17 14:07:23,882 [INFO] [Property24] Sale p5: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=5
+2026-02-17 14:07:29,093 [INFO]   DOM cards: 21
+2026-02-17 14:07:29,155 [INFO] [Property24] Sale p5: 105 total
+2026-02-17 14:07:31,963 [INFO] [Property24] Sale p6: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=6
+2026-02-17 14:07:36,966 [INFO]   DOM cards: 21
+2026-02-17 14:07:37,043 [INFO] [Property24] Sale p6: 126 total
+2026-02-17 14:07:41,383 [INFO] [Property24] Sale p7: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=7
+2026-02-17 14:07:46,104 [INFO]   DOM cards: 21
+2026-02-17 14:07:46,233 [INFO] [Property24] Sale p7: 147 total
+2026-02-17 14:07:48,599 [INFO] [Property24] Sale p8: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=8
+2026-02-17 14:07:53,839 [INFO]   DOM cards: 21
+2026-02-17 14:07:53,892 [INFO] [Property24] Sale p8: 168 total
+2026-02-17 14:07:57,666 [INFO] [Property24] Sale p9: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=9
+2026-02-17 14:08:03,582 [INFO]   DOM cards: 21
+2026-02-17 14:08:03,690 [INFO] [Property24] Sale p9: 189 total
+2026-02-17 14:08:08,097 [INFO] [Property24] Sale p10: https://www.property24.co.ke/property-for-sale-in-nairobi-c1890?Page=10
+2026-02-17 14:08:13,323 [INFO]   DOM cards: 21
+2026-02-17 14:08:13,432 [INFO] [Property24] Sale p10: 210 total
+2026-02-17 14:08:17,688 [INFO] [Property24] Sale DONE — 210
+2026-02-17 14:08:20,786 [INFO] [Property24] Rent
+2026-02-17 14:08:20,787 [INFO] [Property24] Rent p1: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=1
+2026-02-17 14:08:26,661 [INFO]   DOM cards: 21
+2026-02-17 14:08:26,758 [INFO] [Property24] Rent p1: 21 total
+2026-02-17 14:08:31,107 [INFO] [Property24] Rent p2: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=2
+2026-02-17 14:08:36,833 [INFO]   DOM cards: 21
+2026-02-17 14:08:36,936 [INFO] [Property24] Rent p2: 42 total
+2026-02-17 14:08:39,623 [INFO] [Property24] Rent p3: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=3
+2026-02-17 14:08:46,922 [INFO]   DOM cards: 21
+2026-02-17 14:08:47,171 [INFO] [Property24] Rent p3: 63 total
+2026-02-17 14:08:51,471 [INFO] [Property24] Rent p4: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=4
+2026-02-17 14:08:57,305 [INFO]   DOM cards: 21
+2026-02-17 14:08:57,488 [INFO] [Property24] Rent p4: 84 total
+2026-02-17 14:08:59,807 [INFO] [Property24] Rent p5: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=5
+2026-02-17 14:09:06,650 [INFO]   DOM cards: 21
+2026-02-17 14:09:06,904 [INFO] [Property24] Rent p5: 105 total
+2026-02-17 14:09:11,169 [INFO] [Property24] Rent p6: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=6
+2026-02-17 14:09:16,403 [INFO]   DOM cards: 21
+2026-02-17 14:09:16,488 [INFO] [Property24] Rent p6: 126 total
+2026-02-17 14:09:18,494 [INFO] [Property24] Rent p7: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=7
+2026-02-17 14:09:24,070 [INFO]   DOM cards: 21
+2026-02-17 14:09:24,161 [INFO] [Property24] Rent p7: 147 total
+2026-02-17 14:09:27,658 [INFO] [Property24] Rent p8: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=8
+2026-02-17 14:09:33,128 [INFO]   DOM cards: 21
+2026-02-17 14:09:33,210 [INFO] [Property24] Rent p8: 168 total
+2026-02-17 14:09:35,302 [INFO] [Property24] Rent p9: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=9
+2026-02-17 14:09:40,579 [INFO]   DOM cards: 21
+2026-02-17 14:09:40,658 [INFO] [Property24] Rent p9: 189 total
+2026-02-17 14:09:44,653 [INFO] [Property24] Rent p10: https://www.property24.co.ke/property-to-rent-in-nairobi-c1890?Page=10
+2026-02-17 14:09:50,572 [INFO]   DOM cards: 21
+2026-02-17 14:09:50,649 [INFO] [Property24] Rent p10: 210 total
+2026-02-17 14:09:53,600 [INFO] [Property24] Rent DONE — 210
+2026-02-17 14:09:56,228 [INFO] [PigiaMe] Sale
+2026-02-17 14:09:56,230 [INFO] [PigiaMe] Sale p1: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=1
+2026-02-17 14:10:01,786 [INFO]   DOM cards: 0
+2026-02-17 14:10:01,787 [INFO] [PigiaMe] Sale p1: 0 total
+2026-02-17 14:10:04,456 [INFO] [PigiaMe] Sale p2: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=2
+2026-02-17 14:10:09,142 [INFO]   DOM cards: 0
+2026-02-17 14:10:09,143 [INFO] [PigiaMe] Sale p2: 0 total
+2026-02-17 14:10:11,844 [INFO] [PigiaMe] Sale p3: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=3
+2026-02-17 14:10:16,473 [INFO]   DOM cards: 0
+2026-02-17 14:10:16,473 [INFO] [PigiaMe] Sale p3: 0 total
+2026-02-17 14:10:19,473 [INFO] [PigiaMe] Sale p4: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=4
+2026-02-17 14:10:23,945 [INFO]   DOM cards: 0
+2026-02-17 14:10:23,946 [INFO] [PigiaMe] Sale p4: 0 total
+2026-02-17 14:10:27,916 [INFO] [PigiaMe] Sale p5: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=5
+2026-02-17 14:10:32,505 [INFO]   DOM cards: 0
+2026-02-17 14:10:32,505 [INFO] [PigiaMe] Sale p5: 0 total
+2026-02-17 14:10:34,645 [INFO] [PigiaMe] Sale p6: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=6
+2026-02-17 14:10:38,973 [INFO]   DOM cards: 0
+2026-02-17 14:10:38,974 [INFO] [PigiaMe] Sale p6: 0 total
+2026-02-17 14:10:43,279 [INFO] [PigiaMe] Sale p7: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=7
+2026-02-17 14:10:48,036 [INFO]   DOM cards: 0
+2026-02-17 14:10:48,037 [INFO] [PigiaMe] Sale p7: 0 total
+2026-02-17 14:10:50,084 [INFO] [PigiaMe] Sale p8: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=8
+2026-02-17 14:10:54,643 [INFO]   DOM cards: 0
+2026-02-17 14:10:54,643 [INFO] [PigiaMe] Sale p8: 0 total
+2026-02-17 14:10:57,151 [INFO] [PigiaMe] Sale p9: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=9
+2026-02-17 14:11:01,557 [INFO]   DOM cards: 0
+2026-02-17 14:11:01,558 [INFO] [PigiaMe] Sale p9: 0 total
+2026-02-17 14:11:05,298 [INFO] [PigiaMe] Sale p10: https://www.pigiame.co.ke/houses-apartments-for-sale/nairobi/?page=10
+2026-02-17 14:11:09,487 [INFO]   DOM cards: 0
+2026-02-17 14:11:09,488 [INFO] [PigiaMe] Sale p10: 0 total
+2026-02-17 14:11:13,593 [INFO] [PigiaMe] Sale DONE — 0
+2026-02-17 14:11:16,381 [INFO] [PigiaMe] Rent
+2026-02-17 14:11:16,382 [INFO] [PigiaMe] Rent p1: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=1
+2026-02-17 14:11:20,911 [INFO]   DOM cards: 0
+2026-02-17 14:11:20,913 [INFO] [PigiaMe] Rent p1: 0 total
+2026-02-17 14:11:24,563 [INFO] [PigiaMe] Rent p2: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=2
+2026-02-17 14:11:29,060 [INFO]   DOM cards: 0
+2026-02-17 14:11:29,061 [INFO] [PigiaMe] Rent p2: 0 total
+2026-02-17 14:11:33,002 [INFO] [PigiaMe] Rent p3: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=3
+2026-02-17 14:11:37,410 [INFO]   DOM cards: 0
+2026-02-17 14:11:37,411 [INFO] [PigiaMe] Rent p3: 0 total
+2026-02-17 14:11:41,778 [INFO] [PigiaMe] Rent p4: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=4
+2026-02-17 14:11:46,323 [INFO]   DOM cards: 0
+2026-02-17 14:11:46,324 [INFO] [PigiaMe] Rent p4: 0 total
+2026-02-17 14:11:49,605 [INFO] [PigiaMe] Rent p5: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=5
+2026-02-17 14:11:54,037 [INFO]   DOM cards: 0
+2026-02-17 14:11:54,038 [INFO] [PigiaMe] Rent p5: 0 total
+2026-02-17 14:11:56,669 [INFO] [PigiaMe] Rent p6: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=6
+2026-02-17 14:12:01,293 [INFO]   DOM cards: 0
+2026-02-17 14:12:01,293 [INFO] [PigiaMe] Rent p6: 0 total
+2026-02-17 14:12:04,050 [INFO] [PigiaMe] Rent p7: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=7
+2026-02-17 14:12:08,420 [INFO]   DOM cards: 0
+2026-02-17 14:12:08,421 [INFO] [PigiaMe] Rent p7: 0 total
+2026-02-17 14:12:10,630 [INFO] [PigiaMe] Rent p8: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=8
+2026-02-17 14:12:15,118 [INFO]   DOM cards: 0
+2026-02-17 14:12:15,119 [INFO] [PigiaMe] Rent p8: 0 total
+2026-02-17 14:12:19,193 [INFO] [PigiaMe] Rent p9: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=9
+2026-02-17 14:12:23,734 [INFO]   DOM cards: 0
+2026-02-17 14:12:23,734 [INFO] [PigiaMe] Rent p9: 0 total
+2026-02-17 14:12:27,120 [INFO] [PigiaMe] Rent p10: https://www.pigiame.co.ke/houses-apartments-for-rent/nairobi/?page=10
+2026-02-17 14:12:31,867 [INFO]   DOM cards: 0
+2026-02-17 14:12:31,868 [INFO] [PigiaMe] Rent p10: 0 total
+2026-02-17 14:12:36,107 [INFO] [PigiaMe] Rent DONE — 0
+2026-02-17 14:12:36,408 [INFO] Dedup: 420 → 416
+2026-02-17 14:12:36,419 [INFO] Saved 416 → nairobi_properties.csv
+2026-02-17 14:12:36,419 [INFO] ============================================================
+2026-02-17 14:12:36,420 [INFO]   DONE — 416 listings in 371.9s
+2026-02-17 14:12:36,420 [INFO] ============================================================

@@ -338,3 +338,31 @@ if __name__ == "__main__":
     import sys
     csv = sys.argv[1] if len(sys.argv) > 1 else "location_summary.csv"
     diagnose_failures(csv)
+
+print("✅ Map saved as nairobi_affordability_map.html")
+print("📸 Please take a manual screenshot and save it to docs/images/affordability_map.png")
+#from selenium import webdriver
+#from selenium.webdriver.chrome.service import Service
+#from webdriver_manager.chrome import ChromeDriverManager
+#import time
+#import os
+
+#options = webdriver.ChromeOptions()
+#options.add_argument('--headless')
+#options.add_argument('--no-sandbox')                # Critical for Linux
+#options.add_argument('--disable-dev-shm-usage')     # Overcome limited resources
+#options.add_argument('--window-size=1200,800')
+#options.add_argument('--disable-gpu')               # Optional, but sometimes helps
+#options.add_argument('--remote-debugging-port=9222')# Helps with DevToolsActivePort error
+
+# If Chrome is installed in a non-standard location, specify it:
+# options.binary_location = '/usr/bin/google-chrome'
+
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+#html_path = os.path.abspath('nairobi_affordability_map.html')
+#driver.get(f'file://{html_path}')
+#time.sleep(3)  # Give it time to render
+#os.makedirs('docs/images', exist_ok=True)
+#driver.save_screenshot('docs/images/affordability_map.png')
+#driver.quit()

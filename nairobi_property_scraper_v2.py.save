@@ -1,0 +1,665 @@
+"""
+=============================================================
+  Nairobi Property Scraper v2 — Playwright Edition
+  Works on JavaScript-rendered sites (React/Next.js etc.)
+
+  Sites: BuyRentKenya · Property24 Kenya · PigiaMe · Jiji.co.ke
+
+  INSTALL:
+      pip install playwright pandas
+      playwright install chromium
+
+  RUN:
+      python nairobi_property_scraper_v2.py
+
+  OUTPUT:
+      nairobi_properties.csv
+      scraper_v2.log
+=============================================================
+"""
+
+import asyncio
+import csv
+import json
+import logging
+import random
+import re
+from datetime import datetime
+from pathlib import Path
+
+import pandas as pd
+from playwright.async_api import async_playwright, Page, Browser
+
+# ─────────────────────────────────────────────────────────────
+# CONFIGURATION
+# ─────────────────────────────────────────────────────────────
+
+OUTPUT_FILE = "nairobi_properties.csv"
+LOG_FILE    = "scraper_v2.log"
+MAX_PAGES   = 10        # Pages per source per listing type
+PAGE_TIMEOUT = 30_000  # 30s page load timeout (ms)
+DELAY_MIN   = 2.0      # Seconds between page loads
+DELAY_MAX   = 4.5
+HEADLESS    = False     # Set False to watch the browser (good for debugging)
+
+# Toggle sources on/off
+SOURCES = {
+    "buyrentkenya": True,
+    "property24":   True,
+    "pigiame":      True,
+    "jiji":         True,
+}
+
+# ─────────────────────────────────────────────────────────────
+# LOGGING
+# ─────────────────────────────────────────────────────────────
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE, encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
+)
+log = logging.getLogger(__name__)
+
+# ─────────────────────────────────────────────────────────────
+# CSV FIELDS
+# ─────────────────────────────────────────────────────────────
+
+FIELDS = [
+    "source", "listing_type", "title", "price",
+    "location", "neighbourhood", "bedrooms", "bathrooms",
+    "size_sqm", "property_type", "url", "scraped_at",
+]
+
+# ─────────────────────────────────────────────────────────────
+# HELPERS
+# ─────────────────────────────────────────────────────────────
+
+def clean(text: str | None) -> str:
+    if not text:
+        return ""
+    return re.sub(r"\s+", " ", text).strip()
+
+def clean_price(text: str | None) -> str:
+    if not text:
+        return ""
+    # Normalise whitespace and non-breaking spaces
+    return re.sub(r"\s+", " ", (text or "").replace("\xa0", " ")).strip()
+
+def make_record(source, listing_type, title="", price="", location="",
+                neighbourhood="", bedrooms="", bathrooms="", size_sqm="",
+                property_type="", url="") -> dict:
+    return {
+        "source":        source,
+        "listing_type":  listing_type,
+        "title":         clean(title),
+        "price":         clean_price(price),
+        "location":      clean(location),
+        "neighbourhood": clean(neighbourhood),
+        "bedrooms":      clean(bedrooms),
+        "bathrooms":     clean(bathrooms),
+        "size_sqm":      clean(size_sqm),
+        "property_type": clean(property_type),
+        "url":           url.strip() if url else "",
+        "scraped_at":    datetime.now().isoformat(),
+    }
+
+async def delay():
+    await asyncio.sleep(random.uniform(DELAY_MIN, DELAY_MAX))
+
+async def safe_text(page: Page, selector: str, default="") -> str:
+    try:
+        el = await page.query_selector(selector)
+        if el:
+            return (await el.inner_text()).strip()
+    except Exception:
+        pass
+    return default
+
+async def wait_and_goto(page: Page, url: str) -> bool:
+    """Navigate to a URL and wait for network idle. Returns True on success."""
+    try:
+        await page.goto(url, timeout=PAGE_TIMEOUT, wait_until="domcontentloaded")
+        # Give JS time to render
+        await asyncio.sleep(2.5)
+        return True
+    except Exception as e:
+        log.warning(f"Navigation failed: {url} — {e}")
+        return False
+
+# ─────────────────────────────────────────────────────────────
+# SOURCE 1: BuyRentKenya
+# ─────────────────────────────────────────────────────────────
+
+async def scrape_buyrentkenya(page: Page, listing_type: str) -> list[dict]:
+    """
+    listing_type: 'for-sale' | 'to-rent'
+    """
+    results = []
+    src = "BuyRentKenya"
+    slug = "for-sale" if listing_type == "sale" else "to-rent"
+    display = "Sale" if listing_type == "sale" else "Rent"
+
+    log.info(f"[{src}] Starting {display} listings")
+
+    for page_num in range(1, MAX_PAGES + 1):
+        url = f"https://www.buyrentkenya.com/listings/{slug}/nairobi?page={page_num}"
+        log.info(f"[{src}] {display} Page {page_num}: {url}")
+
+        ok = await wait_and_goto(page, url)
+        if not ok:
+            break
+
+        # Inspect all JSON-LD structured data first (richest source)
+        json_ld_data = await page.evaluate("""
+            () => {
+                const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+                return Array.from(scripts).map(s => s.textContent);
+            }
+        """)
+
+        json_ld_found = False
+        for jld_str in json_ld_data:
+            try:
+                jld = json.loads(jld_str)
+                items = jld if isinstance(jld, list) else [jld]
+                for item in items:
+                    if item.get("@type") in ("Residence", "Apartment", "House",
+                                             "SingleFamilyResidence", "Product"):
+                        results.append(make_record(
+                            source=src,
+                            listing_type=display,
+                            title=item.get("name", ""),
+                            price=str(item.get("offers", {}).get("price", "")),
+                            location=item.get("address", {}).get("addressLocality", ""),
+                            url=item.get("url", url),
+                        ))
+                        json_ld_found = True
+            except Exception:
+                pass
+
+        # DOM scraping — real selectors from BuyRentKenya's actual HTML
+        cards = await page.query_selector_all(
+            # BuyRentKenya uses listing cards with data attributes
+            "[data-testid='listing-card'], "
+            ".listing-card, "
+            "div[class*='ListingCard'], "
+            "article[class*='listing'], "
+            "div[class*='property-card']"
+        )
+
+        if not cards and not json_ld_found:
+            # Try to detect if we've hit a CAPTCHA or empty page
+            body_text = await page.evaluate("document.body.innerText")
+            if "captcha" in body_text.lower() or len(body_text) < 200:
+                log.warning(f"[{src}] Possible CAPTCHA or empty page on page {page_num}")
+            else:
+                log.info(f"[{src}] No cards on page {page_num} — trying full page text extraction")
+
+            # Last resort: extract __NEXT_DATA__ or window.__INITIAL_STATE__
+            next_data = await page.evaluate("""
+                () => {
+                    const el = document.getElementById('__NEXT_DATA__');
+                    return el ? el.textContent : null;
+                }
+            """)
+
+            if next_data:
+                try:
+                    data = json.loads(next_data)
+                    # Walk the props tree to find listings
+                    props = data.get("props", {}).get("pageProps", {})
+                    listings_raw = (
+                        props.get("listings") or
+                        props.get("properties") or
+                        props.get("data", {}).get("listings") or
+                        []
+                    )
+                    for listing in listings_raw:
+                        results.append(make_record(
+                            source=src,
+                            listing_type=display,
+                            title=listing.get("title", listing.get("name", "")),
+                            price=str(listing.get("price", listing.get("priceFormatted", ""))),
+                            location=listing.get("suburb", listing.get("location", "")),
+                            neighbourhood=listing.get("suburb", ""),
+                            bedrooms=str(listing.get("bedrooms", listing.get("bedroomsCount", ""))),
+                            bathrooms=str(listing.get("bathrooms", listing.get("bathroomsCount", ""))),
+                            size_sqm=str(listing.get("floorSize", listing.get("erfSize", ""))),
+                            property_type=listing.get("propertyType", listing.get("type", "")),
+                            url=listing.get("url", listing.get("listingUrl", "")),
+                        ))
+                    if listings_raw:
+                        log.info(f"[{src}] Extracted {len(listings_raw)} from __NEXT_DATA__ on page {page_num}")
+                except Exception as e:
+                    log.debug(f"[{src}] __NEXT_DATA__ parse error: {e}")
+
+        for card in cards:
+            try:
+                # Try multiple selector variants for each field
+                title = await card.query_selector(
+                    "h2, h3, [class*='title'], [class*='Title'], [data-testid*='title']"
+                )
+                price = await card.query_selector(
+                    "[class*='price'], [class*='Price'], [data-testid*='price']"
+                )
+                location = await card.query_selector(
+                    "[class*='location'], [class*='suburb'], [class*='address'], "
+                    "[class*='Location'], [data-testid*='location']"
+                )
+                beds = await card.query_selector(
+                    "[class*='bed'], [class*='Bed'], [title*='Bedroom'], "
+                    "[data-testid*='bed'], [aria-label*='bedroom']"
+                )
+                baths = await card.query_selector(
+                    "[class*='bath'], [class*='Bath'], [title*='Bathroom'], "
+                    "[data-testid*='bath'], [aria-label*='bathroom']"
+                )
+                size = await card.query_selector(
+                    "[class*='size'], [class*='Size'], [class*='area'], "
+                    "[class*='sqm'], [data-testid*='size']"
+                )
+                link = await card.query_selector("a[href]")
+                ptype = await card.query_selector(
+                    "[class*='type'], [class*='Type'], [class*='category']"
+                )
+
+                href = await link.get_attribute("href") if link else ""
+                if href and not href.startswith("http"):
+                    href = "https://www.buyrentkenya.com" + href
+
+                rec = make_record(
+                    source=src,
+                    listing_type=display,
+                    title=await title.inner_text() if title else "",
+                    price=await price.inner_text() if price else "",
+                    location=await location.inner_text() if location else "",
+                    bedrooms=await beds.inner_text() if beds else "",
+                    bathrooms=await baths.inner_text() if baths else "",
+                    size_sqm=await size.inner_text() if size else "",
+                    property_type=await ptype.inner_text() if ptype else "",
+                    url=href,
+                )
+                if rec["title"] or rec["price"]:  # Only add non-empty records
+                    results.append(rec)
+
+            except Exception as e:
+                log.debug(f"[{src}] Card error: {e}")
+
+        log.info(f"[{src}] {display} Page {page_num}: {len(results)} total so far")
+
+        # Check if "next page" exists
+        next_btn = await page.query_selector(
+            "[aria-label='Next page'], [class*='next'], button[class*='Next'], a[class*='next']"
+        )
+        if not next_btn:
+            log.info(f"[{src}] No more pages after page {page_num}")
+            break
+
+        await delay()
+
+    log.info(f"[{src}] {display} DONE — {len(results)} listings")
+    return results
+
+
+# ─────────────────────────────────────────────────────────────
+# SOURCE 2: Property24 Kenya
+# ─────────────────────────────────────────────────────────────
+
+async def scrape_property24(page: Page, listing_type: str) -> list[dict]:
+    results = []
+    src = "Property24"
+    slug = (
+        "property-for-sale-in-nairobi-c1890"
+        if listing_type == "sale"
+        else "property-to-rent-in-nairobi-c1890"
+    )
+    display = "Sale" if listing_type == "sale" else "Rent"
+
+    log.info(f"[{src}] Starting {display} listings")
+
+    for page_num in range(1, MAX_PAGES + 1):
+        url = f"https://www.property24.co.ke/{slug}?Page={page_num}"
+        log.info(f"[{src}] {display} Page {page_num}: {url}")
+
+        ok = await wait_and_goto(page, url)
+        if not ok:
+            break
+
+        # Try __NEXT_DATA__ first
+        next_data = await page.evaluate("""
+            () => {
+                const el = document.getElementById('__NEXT_DATA__');
+                return el ? el.textContent : null;
+            }
+        """)
+
+        if next_data:
+            try:
+                data = json.loads(next_data)
+                props = data.get("props", {}).get("pageProps", {})
+
+                # Property24 often stores listings under these keys
+                listings_raw = (
+                    props.get("listings") or
+                    props.get("properties") or
+                    props.get("listingData", {}).get("listings") or
+                    props.get("searchResults", {}).get("listings") or
+                    []
+                )
+
+                for listing in listings_raw:
+                    price_info = listing.get("price", {})
+                    price_str = (
+                        price_info.get("formattedAmount") or
+                        str(price_info.get("amount", "")) or
+                        str(listing.get("displayPrice", ""))
+                    )
+
+                    addr = listing.get("address", {})
+                    neighbourhood = (
+                        addr.get("suburb") or addr.get("area") or
+                        listing.get("suburb", "")
+                    )
+                    full_location = (
+                        addr.get("displayAddress") or
+                        f"{neighbourhood}, Nairobi"
+                    )
+
+                    listing_url = listing.get("url") or listing.get("listingUrl") or ""
+                    if listing_url and not listing_url.startswith("http"):
+                        listing_url = "https://www.property24.co.ke" + listing_url
+
+                    results.append(make_record(
+                        source=src,
+                        listing_type=display,
+                        title=listing.get("title", listing.get("propertyTitle", "")),
+                        price=price_str,
+                        location=full_location,
+                        neighbourhood=neighbourhood,
+                        bedrooms=str(listing.get("bedrooms", listing.get("bedroomCount", ""))),
+                        bathrooms=str(listing.get("bathrooms", listing.get("bathroomCount", ""))),
+                        size_sqm=str(listing.get("floorSize", listing.get("erfSize", ""))),
+                        property_type=listing.get("propertyType", listing.get("type", "")),
+                        url=listing_url,
+                    ))
+
+                if listings_raw:
+                    log.info(f"[{src}] __NEXT_DATA__: {len(listings_raw)} listings on page {page_num}")
+            except Exception as e:
+                log.debug(f"[{src}] __NEXT_DATA__ parse error: {e}")
+
+        # DOM scraping (actual Property24 class names observed from page source)
+        cards = await page.query_selector_all(
+            ".p24_regularTile, "
+            "div[class*='p24_tile'], "
+            "div[class*='ListingResult'], "
+            "div[class*='listing-tile'], "
+            "[data-testid='listing-card']"
+        )
+
+        for card in cards:
+            try:
+                title    = await card.query_selector(".p24_title, .p24_propertyName, h2, h3, [class*='title']")
+                price    = await card.query_selector(".p24_price, .p24_displayPrice, [class*='price']")
+                location = await card.query_selector(".p24_address, .p24_addressDescription, [class*='address']")
+                beds     = await card.query_selector("[class*='bedroom'], [class*='Bedroom'], [title*='Bedroom']")
+                baths    = await card.query_selector("[class*='bathroom'], [class*='Bathroom']")
+                size     = await card.query_selector("[class*='floorSize'], [class*='erfSize'], [class*='size']")
+                link     = await card.query_selector("a[href]")
+                ptype    = await card.query_selector("[class*='propertyType'], [class*='category']")
+
+                href = await link.get_attribute("href") if link else ""
+                if href and not href.startswith("http"):
+                    href = "https://www.property24.co.ke" + href
+
+                rec = make_record(
+                    source=src,
+                    listing_type=display,
+                    title=await title.inner_text() if title else "",
+                    price=await price.inner_text() if price else "",
+                    location=await location.inner_text() if location else "",
+                    bedrooms=await beds.inner_text() if beds else "",
+                    bathrooms=await baths.inner_text() if baths else "",
+                    size_sqm=await size.inner_text() if size else "",
+                    property_type=await ptype.inner_text() if ptype else "",
+                    url=href,
+                )
+                if rec["title"] or rec["price"]:
+                    results.append(rec)
+
+            except Exception as e:
+                log.debug(f"[{src}] Card error: {e}")
+
+        log.info(f"[{src}] {display} Page {page_num}: {len(results)} total")
+
+        # Check for next page
+        next_btn = await page.query_selector(
+            "a[title='Next Page'], [class*='next'], [aria-label='Next']"
+        )
+        if not next_btn:
+            log.info(f"[{src}] No more pages after page {page_num}")
+            break
+
+        await delay()
+
+    log.info(f"[{src}] {display} DONE — {len(results)} listings")
+    return results
+
+
+# ─────────────────────────────────────────────────────────────
+# SOURCE 3: PigiaMe
+# ─────────────────────────────────────────────────────────────
+
+async def scrape_pigiame(page: Page, listing_type: str) -> list[dict]:
+    results = []
+    src = "PigiaMe"
+    slug = (
+        "houses-apartments-for-sale"
+        if listing_type == "sale"
+        else "houses-apartments-for-rent"
+    )
+    display = "Sale" if listing_type == "sale" else "Rent"
+
+    log.info(f"[{src}] Starting {display} listings")
+
+    for page_num in range(1, MAX_PAGES + 1):
+        url = f"https://www.pigiame.co.ke/{slug}/nairobi/?page={page_num}"
+        log.info(f"[{src}] {display} Page {page_num}: {url}")
+
+        ok = await wait_and_goto(page, url)
+        if not ok:
+            break
+
+        # PigiaMe is a React SPA — look for embedded JSON state
+        for script_content in await page.evaluate("""
+            () => Array.from(document.querySelectorAll('script')).map(s => s.textContent)
+        """):
+            if "listing" in script_content.lower() and len(script_content) > 500:
+                # Look for JSON array of listings
+                matches = re.findall(r'\{[^{}]{50,}\}', script_content)
+                for m in matches:
+                    try:
+                        obj = json.loads(m)
+                        if obj.get("price") and obj.get("title"):
+                            results.append(make_record(
+                                source=src,
+                                listing_type=display,
+                                title=obj.get("title", ""),
+                                price=str(obj.get("price", "")),
+                                location=obj.get("location", obj.get("suburb", "")),
+                                bedrooms=str(obj.get("bedrooms", obj.get("bedroom_count", ""))),
+                                url=obj.get("url", obj.get("canonical_url", "")),
+                            ))
+                    except Exception:
+                        pass
+
+        # DOM scraping
+        cards = await page.query_selector_all(
+            "article.listing-card, "
+            "li.listing-card, "
+            "div.listing, "
+            "div[class*='listing-card'], "
+            "div[class*='advert-card'], "
+            ".property-card, "
+            "[data-testid='listing']"
+        )
+
+        for card in cards:
+            try:
+                title    = await card.query_selector("h2, h3, [class*='title'], .listing-title")
+                price    = await card.query_selector("[class*='price'], .price, .amount")
+                location = await card.query_selector("[class*='location'], [class*='suburb'], [class*='area']")
+                beds     = await card.query_selector("[class*='bed'], [data-bedrooms]")
+                baths    = await card.query_selector("[class*='bath'], [data-bathrooms]")
+                link     = await card.query_selector("a[href]")
+                ptype    = await card.query_selector("[class*='type'], [class*='category']")
+                size     = await card.query_selector("[class*='size'], [class*='area'], [class*='sqm']")
+
+                href = await link.get_attribute("href") if link else ""
+                if href and not href.startswith("http"):
+                    href = "https://www.pigiame.co.ke" + href
+
+                rec = make_record(
+                    source=src,
+                    listing_type=display,
+                    title=await title.inner_text() if title else "",
+                    price=await price.inner_text() if price else "",
+                    location=await location.inner_text() if location else "",
+                    bedrooms=await beds.inner_text() if beds else "",
+                    bathrooms=await baths.inner_text() if baths else "",
+                    size_sqm=await size.inner_text() if size else "",
+                    property_type=await ptype.inner_text() if ptype else "",
+                    url=href,
+                )
+                if rec["title"] or rec["price"]:
+                    results.append(rec)
+
+            except Exception as e:
+                log.debug(f"[{src}] Card error: {e}")
+
+        log.info(f"[{src}] {display} Page {page_num}: {len(results)} total")
+
+        next_btn = await page.query_selector(
+            "[class*='next'], [aria-label='Next'], a[rel='next']"
+        )
+        if not next_btn:
+            log.info(f"[{src}] No more pages after page {page_num}")
+            break
+
+        await delay()
+
+    log.info(f"[{src}] {display} DONE — {len(results)} listings")
+    return results
+
+
+# ─────────────────────────────────────────────────────────────
+# SOURCE 4: Jiji.co.ke
+# ─────────────────────────────────────────────────────────────
+
+async def scrape_jiji(page: Page, listing_type: str) -> list[dict]:
+    results = []
+    src = "Jiji"
+    slug = (
+        "houses-apartments-for-sale"
+        if listing_type == "sale"
+        else "houses-apartments-for-rent"
+    )
+    display = "Sale" if listing_type == "sale" else "Rent"
+
+    log.info(f"[{src}] Starting {display} listings")
+
+    for page_num in range(1, MAX_PAGES + 1):
+        url = f"https://jiji.co.ke/nairobi/{slug}?page={page_num}"
+        log.info(f"[{src}] {display} Page {page_num}: {url}")
+
+        ok = await wait_and_goto(page, url)
+        if not ok:
+            break
+
+        # Jiji stores listing data in a window.JijiApp or data attribute
+        jiji_data = await page.evaluate("""
+            () => {
+                // Look for Jiji's data in script tags
+                const scripts = document.querySelectorAll('script');
+                for (const s of scripts) {
+                    const t = s.textContent;
+                    if (t.includes('"adverts"') || t.includes('"advert_list"')) {
+                        return t;
+                    }
+                }
+                return null;
+            }
+        """)
+
+        if jiji_data:
+            try:
+                # Extract the JSON object
+                match = re.search(r'"adverts"\s*:\s*(\[.+?\])', jiji_data, re.DOTALL)
+                if match:
+                    adverts = json.loads(match.group(1))
+                    for adv in adverts:
+                        price = adv.get("price_obj", {}).get("value", "")
+                        results.append(make_record(
+                            source=src,
+                            listing_type=display,
+                            title=adv.get("title", ""),
+                            price=f"KSh {price}" if price else "",
+                            location=adv.get("region_name", adv.get("town_name", "")),
+                            neighbourhood=adv.get("region_name", ""),
+                            bedrooms=str(adv.get("attrs", {}).get("Bedrooms", "")),
+                            bathrooms=str(adv.get("attrs", {}).get("Bathrooms", "")),
+                            property_type=adv.get("category_name", ""),
+                            url="https://jiji.co.ke" + adv.get("url", ""),
+                        ))
+                    log.info(f"[{src}] Extracted {len(adverts)} from JS data on page {page_num}")
+            except Exception as e:
+                log.debug(f"[{src}] JS data parse error: {e}")
+
+        # DOM scraping — Jiji's real selectors
+        cards = await page.query_selector_all(
+            "div.b-advert-list-item, "
+            "article[class*='advert'], "
+            "div[class*='advert-item'], "
+            "li[class*='advert'], "
+            "[data-qa='advert-item']"
+        )
+
+        for card in cards:
+            try:
+                title    = await card.query_selector(
+                    "div.b-advert-title-inner, .qa-advert-title, h2, h3, [class*='title']"
+                )
+                price    = await card.query_selector(
+                    ".qa-advert-price, div.price-box, span.price, [class*='price']"
+                )
+                location = await card.query_selector(
+                    "div.b-list-advert__region__text, [class*='region'], [class*='location']"
+                )
+                link     = await card.query_selector("a.b-advert-link, a[href*='/nairobi/']")
+                attrs    = await card.query_selector_all("[class*='attribute'] span, [class*='param'] li")
+                ptype    = await card.query_selector("[class*='category'], [class*='type']")
+
+                attr_texts = []
+                for attr in attrs:
+                    attr_texts.append((await attr.inner_text()).strip())
+
+                bedrooms  = next((a for a in attr_texts if "bed" in a.lower()), "")
+                bathrooms = next((a for a in attr_texts if "bath" in a.lower()), "")
+                size      = next((a for a in attr_texts if "m²" in a or "sqm" in a.lower()), "")
+
+                href = await link.get_attribute("href") if link else ""
+                if href and not href.startswith("http"):
+                    href = "https://jiji.co.ke" + href
+
+                rec = make_record(
+                    source=src,
+                    listing_type=display,
+                    title=await title.inner_text() if title else "",
+                    price=await price.inner_text() if price else "",
+                    location=await location.inner_text() if location else "",
+                    bedrooms=bedrooms,
+                
